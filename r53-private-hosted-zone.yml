@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Creates a private hosted zone for the specified vpcs
+
+Parameters:
+  Name:
+    Description: Fully-qualified domain name.
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '(?!-)[a-zA-Z0-9-.]*(?<!-)'
+    ConstraintDescription: Fully-qualified domain name.
+  Comment:
+    Type: String
+    MinLength: '1'
+    MaxLength: '255'
+    AllowedPattern: '[-_ a-zA-Z0-9]*'
+    ConstraintDescription: 'can contain only alphanumeric characters, spaces, dashes and underscores.'
+  VpcId:
+    Description: VPC the private hosted zone is associated with
+    Type: 'AWS::EC2::VPC::Id'
+Resources:
+  PrivateHostedZone:
+    Type: 'AWS::Route53::HostedZone'
+    Properties:
+      HostedZoneConfig:
+        Comment: ''
+      Name: !Ref Name
+      VPCs:
+        - VPCId: !Ref VpcId
+          VPCRegion: !Ref 'AWS::Region'
+      HostedZoneTags:
+        - Key: StackName
+          Value: !Ref 'AWS::StackName'
+Outputs:
+  PrivateHostedZoneName:
+    Value: !Ref Name
+  PrivateHostedZoneID:
+    Value: !Ref PrivateHostedZone
