@@ -1,6 +1,8 @@
 # sls-service-discovery
 
-This project demonstrates how to use route 53 service discovery in a VPC. The example will show how lambda function can look up a service address at runtime using DNS
+This project demonstrates how to use Route 53 service discovery in a VPC. The example shows how a lambda function can look up a service address at runtime using a DNS CNAME record lookup.
+
+For more details on Route 53 Auto Naming API for service name management and discovery, refer to the [annoucement](https://aws.amazon.com/about-aws/whats-new/2017/12/amazon-route-53-releases-auto-naming-api-name-service-management/) and the [api documentation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_Operations_Amazon_Route_53_Auto_Naming.html)
 
 ## Network Set up
 
@@ -65,5 +67,5 @@ Tear down is very slow, as the ENI that was allocated for use by lambda takes se
 
 ## Follow On Work
 
-* Demonstrate with internal services that register
-* Show how health checks work, responses based on weighting, etc
+* Demonstrate with internal services that register their name with the service when they boot.
+* Show how health checks work to winnow the CNAME lookup response to only healthy service providers, responses based on weighting, etc
