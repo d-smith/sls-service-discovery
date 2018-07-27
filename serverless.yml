@@ -25,3 +25,9 @@ functions:
           path: /sample
           method: get
           private: true
+    vpc:
+      securityGroupIds:
+        - sg-37540a47
+      subnetIds:
+        - subnet-df5a15a6
+        - subnet-33caa378
