@@ -47,9 +47,21 @@ sls deploy --region <region> --aws-profile <your profile>
 This is a go project - if you don't have go installed  you can build using docker:
 
 ```console
+docker run --rm -v "$PWD":/go/src/sls-service-discovery -w /go/src/sls-service-discovery golang:1.9 make
 ```
 
-If you have neither go nor docker then there's really nothing I can do for you.
+Once deployed, curl the url the sls provides using the x-api-key shown as well. You should see the output of www.example.com.
+
+To tear down the example, do:
+
+```console
+sls remove --region <region> --aws-profile <your profile>
+```
+
+**Note**
+
+Tear down is very slow, as the ENI that was allocated for use by lambda takes seemingly forever to delete.
+
 
 ## Follow On Work
 
