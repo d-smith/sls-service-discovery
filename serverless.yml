@@ -20,6 +20,7 @@ package:
 functions:
   sample:
     handler: bin/sample
+    timeout: 10
     events:
       - http:
           path: /sample
@@ -29,5 +30,5 @@ functions:
       securityGroupIds:
         - sg-37540a47
       subnetIds:
-        - subnet-df5a15a6
-        - subnet-33caa378
+        - subnet-d76d22ae 
+        - subnet-aaf69fe1
