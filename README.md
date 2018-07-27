@@ -35,7 +35,21 @@ Address: 93.184.216.34
 
 ## Serverless Example
 
-TODO
+The provided serverless example does a lookup of the destination address via the CNAME associated with examplesvc.sector7.internal, does a get on it, then relays the result back to the caller.
+
+To install:
+
+```console
+make
+sls deploy --region <region> --aws-profile <your profile>
+```
+
+This is a go project - if you don't have go installed  you can build using docker:
+
+```console
+```
+
+If you have neither go nor docker then there's really nothing I can do for you.
 
 ## Follow On Work
 
