@@ -1,0 +1,27 @@
+service: samplesls
+
+provider:
+  name: aws
+  runtime: go1.x
+
+  apiKeys:
+    - statusapi-${opt:stage, self:provider.stage}
+  usagePlan:
+    throttle:
+      burstLimit: 20
+      rateLimit: 10
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
+
+   
+functions:
+  sample:
+    handler: bin/sample
+    events:
+      - http:
+          path: /sample
+          method: get
+          private: true
